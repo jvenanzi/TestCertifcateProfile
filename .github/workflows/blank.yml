@@ -1,0 +1,19 @@
+name: Run on Self-Hosted Runner via Dispatch
+
+on:
+  repository_dispatch:
+    types: [trigger-from-deploy-app]
+
+jobs:
+  triggered-job:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    # ... any other steps you'd like to add ...
+
+    - name: Execute some task
+      run: |
+        echo "This is a step in Repo test-cert, executed via dispatch from Repo deploy-app!"
